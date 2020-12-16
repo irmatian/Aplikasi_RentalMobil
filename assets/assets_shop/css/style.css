@@ -2309,6 +2309,7 @@ body,
 	position: relative;
 }
 
+
 .car-info-list li + li {
 	border-left: 0;
 }

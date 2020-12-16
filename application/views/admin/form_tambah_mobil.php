@@ -38,15 +38,64 @@
   							<input type="text" name="warna" class="form-control">
   							<?php echo form_error('warna','<div class="text-small text-danger">','</div>') ?>
   						</div>
+
+              <div class="form-group">
+                <label>AC</label>
+                <select name="ac" class="form-control">
+                  <option value="1">Tesedia</option>
+                  <option value="0">Tidak Tersedia</option>
+                  <?php echo form_error('ac','<div class="text-small text-danger">','</div>') ?>
+                </select>
+              </div>
+
+               <div class="form-group">
+                <label>Supir</label>
+                <select name="supir" class="form-control">
+                  <option value="1">Tesedia</option>
+                  <option value="0">Tidak Tersedia</option>
+                  <?php echo form_error('supir','<div class="text-small text-danger">','</div>') ?>
+                </select>
+              </div>
+
+               <div class="form-group">
+                <label>MP3 Player</label>
+                <select name="mp3_player" class="form-control">
+                  <option value="1">Tesedia</option>
+                  <option value="0">Tidak Tersedia</option>
+                  <?php echo form_error('mp3_player','<div class="text-small text-danger">','</div>') ?>
+                </select>
+              </div>
+
+               <div class="form-group">
+                <label>Central Lock</label>
+                <select name="central_lock" class="form-control">
+                  <option value="1">Tesedia</option>
+                  <option value="0">Tidak Tersedia</option>
+                  <?php echo form_error('central_lock','<div class="text-small text-danger">','</div>') ?>
+                </select>
+              </div>
+
   					</div>
   					<div class="col-md-6">
   						<div class="form-group">
-  							<label>Tahun</label>
-  							<input type="text" name="tahun" class="form-control">
-  							<?php echo form_error('tahun','<div class="text-small text-danger">','</div>') ?>
+  							<label>Harga Sewa</label>
+  							<input type="number" name="harga" class="form-control">
+  							<?php echo form_error('harga','<div class="text-small text-danger">','</div>') ?>
   						</div>
 
   						<div class="form-group">
+                <div class="form-group">
+                <label>Denda</label>
+                <input type="number" name="denda" class="form-control">
+                <?php echo form_error('denda','<div class="text-small text-danger">','</div>') ?>
+              </div>
+
+              <div class="form-group">
+                <label>Tahun</label>
+                <input type="text" name="tahun" class="form-control">
+                <?php echo form_error('tahun','<div class="text-small text-danger">','</div>') ?>
+              </div>
+
   							<label>Status</label>
   							<select name="status" class="form-control">
   								<option value="">--Pilih Status--</option>

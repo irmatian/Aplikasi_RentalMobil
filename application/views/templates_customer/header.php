@@ -72,6 +72,9 @@
                                 <li class=""><a href="<?php echo base_url('customer/dashboard')?>">Beranda</a>
                                 </li>
                                   <li><a href="<?php echo base_url('customer/data_mobil')?>">Mobil</a></li>
+
+                                  <li><a href="<?php echo base_url('customer/transaksi')?>">Transaksi</a></li>
+
                                   <li><a href="<?php echo base_url('register')?>">Register</a></li>
                                 <?php if($this->session->userdata('nama')) { ?>
                                   <li><a href="<?php echo base_url('auth/logout')?>">Welcome <?php echo $this->session->userdata('nama')?> <span> | Logout</span></a></li>

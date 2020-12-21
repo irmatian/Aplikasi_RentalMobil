@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2020 at 05:19 AM
+-- Generation Time: Dec 21, 2020 at 05:02 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -64,7 +64,11 @@ INSERT INTO `customer` (`id_customer`, `nama`, `username`, `alamat`, `gender`, `
 (5, 'ahni', 'anhinuraini', 'Sorong papua', 'Perempuan', '052211343010', '343333343422', 'b0baee9d279d34fa1dfd71aadb908c3f', 2),
 (6, 'Irma Yanti', 'admin', 'Yogyakarta', 'Perempuan', '09221122322', '1233322323221', '1e48c4420b7073bc11916c6c1de226bb', 1),
 (7, 'Ahni Nuraini', 'ahninur', 'Ambarketawang Gamping Sleman ', 'Perempuan', '052211343200', '34333331132900', '38f629170ac3ab74b9d6d2cc411c2f3c', 2),
-(8, 'Irfan Afandi', 'irfan', 'Gamping Sleman Yogyakarta', 'Laki-Laki', '05221143122', '3433332443210', '38f629170ac3ab74b9d6d2cc411c2f3c', 2);
+(8, 'Irfan Afandi', 'irfan', 'Gamping Sleman Yogyakarta', 'Laki-Laki', '05221143122', '3433332443210', '38f629170ac3ab74b9d6d2cc411c2f3c', 2),
+(9, 'Riska Putri', 'riska', 'Mejing Sleman', 'Perempuan', '051111343010', '34322331132900', '1f6419b1cbe79c71410cb320fc094775', 2),
+(10, 'Riska Putri', 'riska', 'Mejing Sleman', 'Perempuan', '051111343010', '34322331132900', '1f6419b1cbe79c71410cb320fc094775', 2),
+(11, 'Riska Putri', 'riska', 'Mejing Sleman', 'Perempuan', '051111343010', '34322331132900', '1f6419b1cbe79c71410cb320fc094775', 2),
+(12, 'Riska Putri', 'riska', 'Mejing Sleman', 'Perempuan', '051111343010', '34322331132900', '1f6419b1cbe79c71410cb320fc094775', 2);
 
 -- --------------------------------------------------------
 
@@ -80,6 +84,12 @@ CREATE TABLE `mobil` (
   `warna` varchar(20) NOT NULL,
   `tahun` varchar(4) NOT NULL,
   `status` varchar(50) NOT NULL,
+  `harga` int(11) NOT NULL,
+  `denda` int(11) NOT NULL,
+  `ac` int(11) NOT NULL,
+  `supir` int(11) NOT NULL,
+  `mp3_player` int(11) NOT NULL,
+  `central_lock` int(11) NOT NULL,
   `gambar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -87,10 +97,11 @@ CREATE TABLE `mobil` (
 -- Dumping data for table `mobil`
 --
 
-INSERT INTO `mobil` (`id_mobil`, `kode_type`, `merk`, `no_plat`, `warna`, `tahun`, `status`, `gambar`) VALUES
-(1, 'SDN', 'Toyota Camry', 'B2321BA', 'Hitam', '2014', '1', 'sedan11.jpg'),
-(8, 'SDN', 'Toyota Yaris', 'B2301FA', 'Merah', '2017', '1', 'sedan3.jpg'),
-(9, 'SDN', 'Grand Livia', 'B2300LQ', 'Hitam', '2014', '1', 'sedan41.jpg');
+INSERT INTO `mobil` (`id_mobil`, `kode_type`, `merk`, `no_plat`, `warna`, `tahun`, `status`, `harga`, `denda`, `ac`, `supir`, `mp3_player`, `central_lock`, `gambar`) VALUES
+(1, 'SDN', 'Toyota Camry', 'B2321BA', 'Hitam', '2014', '0', 300000, 100000, 1, 0, 1, 0, 'sedan11.jpg'),
+(8, 'SDN', 'Toyota Yaris', 'B2301FA', 'Merah', '2017', '0', 500000, 100000, 1, 0, 1, 0, 'sedan3.jpg'),
+(9, 'SDN', 'Grand Livia', 'B2300LQ', 'Hitam', '2014', '0', 400000, 100000, 1, 1, 1, 0, 'sedan41.jpg'),
+(11, 'SC', 'Honda Jazz', 'AB3012LG', 'Silver', '2019', '0', 400000, 100000, 1, 0, 1, 0, 'Jazz1.jpg');
 
 -- --------------------------------------------------------
 
@@ -120,10 +131,25 @@ CREATE TABLE `transaksi` (
   `id_mobil` int(11) NOT NULL,
   `tanggal_rental` date NOT NULL,
   `tanggal_kembali` date NOT NULL,
+  `harga` varchar(120) NOT NULL,
+  `denda` varchar(120) NOT NULL,
   `tanggal_pengembalian` date NOT NULL,
   `status_pengembalian` varchar(50) NOT NULL,
-  `status_rental` varchar(50) NOT NULL
+  `status_rental` varchar(50) NOT NULL,
+  `bukti_pembayaran` varchar(120) NOT NULL,
+  `status_pembayaran` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`id_rental`, `id_customer`, `id_mobil`, `tanggal_rental`, `tanggal_kembali`, `harga`, `denda`, `tanggal_pengembalian`, `status_pengembalian`, `status_rental`, `bukti_pembayaran`, `status_pembayaran`) VALUES
+(2, 8, 1, '2020-12-15', '2020-12-17', '300000', '100000', '0000-00-00', 'Belum Kembali', 'Belum Selesai', 'Irma_Yanti_Essay.pdf', 0),
+(3, 8, 8, '2020-12-16', '2020-12-17', '500000', '100000', '0000-00-00', 'Belum Kembali', 'Belum Selesai', 'irma.png', 0),
+(4, 9, 9, '2020-12-18', '2020-12-19', '400000', '100000', '0000-00-00', 'Belum Kembali', 'Belum Selesai', '', 0),
+(5, 9, 11, '2020-12-26', '2020-12-27', '400000', '100000', '0000-00-00', 'Belum Kembali', 'Belum Selesai', '', 0),
+(6, 9, 1, '2020-12-22', '2020-12-23', '300000', '100000', '0000-00-00', 'Belum Kembali', 'Belum Selesai', '', 0);
 
 -- --------------------------------------------------------
 
@@ -143,7 +169,8 @@ CREATE TABLE `type` (
 
 INSERT INTO `type` (`id_type`, `kode_type`, `nama_type`) VALUES
 (1, 'SDN', 'Sedan'),
-(3, 'SC', 'Sport Car');
+(3, 'SC', 'Sport Car'),
+(4, 'MNV', 'Minivan Jazz');
 
 --
 -- Indexes for dumped tables
@@ -199,13 +226,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `mobil`
 --
 ALTER TABLE `mobil`
-  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `rental`
@@ -217,13 +244,13 @@ ALTER TABLE `rental`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_rental` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_rental` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `type`
 --
 ALTER TABLE `type`
-  MODIFY `id_type` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_type` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2020 at 05:02 PM
+-- Generation Time: Dec 22, 2020 at 09:10 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -145,7 +145,7 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id_rental`, `id_customer`, `id_mobil`, `tanggal_rental`, `tanggal_kembali`, `harga`, `denda`, `tanggal_pengembalian`, `status_pengembalian`, `status_rental`, `bukti_pembayaran`, `status_pembayaran`) VALUES
-(2, 8, 1, '2020-12-15', '2020-12-17', '300000', '100000', '0000-00-00', 'Belum Kembali', 'Belum Selesai', 'Irma_Yanti_Essay.pdf', 0),
+(2, 8, 1, '2020-12-15', '2020-12-17', '300000', '100000', '0000-00-00', 'Belum Kembali', 'Belum Selesai', 'Irma_Yanti_Essay.pdf', 1),
 (3, 8, 8, '2020-12-16', '2020-12-17', '500000', '100000', '0000-00-00', 'Belum Kembali', 'Belum Selesai', 'irma.png', 0),
 (4, 9, 9, '2020-12-18', '2020-12-19', '400000', '100000', '0000-00-00', 'Belum Kembali', 'Belum Selesai', '', 0),
 (5, 9, 11, '2020-12-26', '2020-12-27', '400000', '100000', '0000-00-00', 'Belum Kembali', 'Belum Selesai', '', 0),

@@ -18,6 +18,7 @@
 				<th>Tgl. Dikembalikan</th>
 				<th>Status Pengembalian</th>
 				<th>Status Rental</th>
+				<th>Cek Pembayaran</th>
 				<th>Action</th>
 			</tr>
 
@@ -60,6 +61,18 @@
 							}else {
 								echo "Belum Kembali";
 							} ?>
+					</td>
+
+
+					<td>
+						<center>
+							<?php 
+							if(empty($tr->bukti_pembayaran)) { ?>
+								<button class="btn btn-sm btn-danger"><i class="fas fa-times-circle"></i></button>
+							<?php }else{ ?>
+								<a class="btn btn-sm btn-primary" href="<?php echo base_url('admin/transaksi/pembayaran/'.$tr->id_rental) ?>"><i class="fas fa-check-circle"></i></a>
+							<?php } ?>
+						</center>
 					</td>
 
 					

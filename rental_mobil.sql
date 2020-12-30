@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2020 at 09:10 AM
+-- Generation Time: Dec 30, 2020 at 03:56 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -101,7 +101,8 @@ INSERT INTO `mobil` (`id_mobil`, `kode_type`, `merk`, `no_plat`, `warna`, `tahun
 (1, 'SDN', 'Toyota Camry', 'B2321BA', 'Hitam', '2014', '0', 300000, 100000, 1, 0, 1, 0, 'sedan11.jpg'),
 (8, 'SDN', 'Toyota Yaris', 'B2301FA', 'Merah', '2017', '0', 500000, 100000, 1, 0, 1, 0, 'sedan3.jpg'),
 (9, 'SDN', 'Grand Livia', 'B2300LQ', 'Hitam', '2014', '0', 400000, 100000, 1, 1, 1, 0, 'sedan41.jpg'),
-(11, 'SC', 'Honda Jazz', 'AB3012LG', 'Silver', '2019', '0', 400000, 100000, 1, 0, 1, 0, 'Jazz1.jpg');
+(11, 'SC', 'Honda Jazz', 'AB3012LG', 'Silver', '2019', '0', 400000, 100000, 1, 0, 1, 0, 'Jazz1.jpg'),
+(18, 'SDN', 'Alphard Hitam', 'AB9090LU', 'Hitam', '2017', '0', 700000, 150000, 1, 1, 1, 1, 'alphard_hitam.jpg');
 
 -- --------------------------------------------------------
 
@@ -133,6 +134,7 @@ CREATE TABLE `transaksi` (
   `tanggal_kembali` date NOT NULL,
   `harga` varchar(120) NOT NULL,
   `denda` varchar(120) NOT NULL,
+  `total_denda` varchar(120) NOT NULL,
   `tanggal_pengembalian` date NOT NULL,
   `status_pengembalian` varchar(50) NOT NULL,
   `status_rental` varchar(50) NOT NULL,
@@ -144,12 +146,12 @@ CREATE TABLE `transaksi` (
 -- Dumping data for table `transaksi`
 --
 
-INSERT INTO `transaksi` (`id_rental`, `id_customer`, `id_mobil`, `tanggal_rental`, `tanggal_kembali`, `harga`, `denda`, `tanggal_pengembalian`, `status_pengembalian`, `status_rental`, `bukti_pembayaran`, `status_pembayaran`) VALUES
-(2, 8, 1, '2020-12-15', '2020-12-17', '300000', '100000', '0000-00-00', 'Belum Kembali', 'Belum Selesai', 'Irma_Yanti_Essay.pdf', 1),
-(3, 8, 8, '2020-12-16', '2020-12-17', '500000', '100000', '0000-00-00', 'Belum Kembali', 'Belum Selesai', 'irma.png', 0),
-(4, 9, 9, '2020-12-18', '2020-12-19', '400000', '100000', '0000-00-00', 'Belum Kembali', 'Belum Selesai', '', 0),
-(5, 9, 11, '2020-12-26', '2020-12-27', '400000', '100000', '0000-00-00', 'Belum Kembali', 'Belum Selesai', '', 0),
-(6, 9, 1, '2020-12-22', '2020-12-23', '300000', '100000', '0000-00-00', 'Belum Kembali', 'Belum Selesai', '', 0);
+INSERT INTO `transaksi` (`id_rental`, `id_customer`, `id_mobil`, `tanggal_rental`, `tanggal_kembali`, `harga`, `denda`, `total_denda`, `tanggal_pengembalian`, `status_pengembalian`, `status_rental`, `bukti_pembayaran`, `status_pembayaran`) VALUES
+(3, 8, 8, '2020-12-16', '2020-12-17', '500000', '100000', '100000', '2020-12-18', 'Kembali', 'Selesai', 'irma.png', 0),
+(14, 8, 1, '2020-12-30', '2020-12-31', '300000', '100000', '100000', '2021-01-01', 'Kembali', 'Selesai', 'Proker_Humas_20_21_-_Sheet1.pdf', 1),
+(16, 9, 9, '2020-12-29', '2020-12-30', '400000', '100000', '100000', '2020-12-31', 'Kembali', 'Selesai', 'logo1.jpg', 1),
+(20, 9, 18, '2020-12-29', '2020-12-30', '700000', '150000', '300000', '2021-01-01', 'Kembali', 'Selesai', 'form_input2.PNG', 1),
+(21, 9, 11, '2020-12-30', '2020-12-31', '400000', '100000', '0', '0000-00-00', 'Belum Kembali', 'Belum Selesai', '', 0);
 
 -- --------------------------------------------------------
 
@@ -169,8 +171,7 @@ CREATE TABLE `type` (
 
 INSERT INTO `type` (`id_type`, `kode_type`, `nama_type`) VALUES
 (1, 'SDN', 'Sedan'),
-(3, 'SC', 'Sport Car'),
-(4, 'MNV', 'Minivan Jazz');
+(3, 'SC', 'Sport Car');
 
 --
 -- Indexes for dumped tables
@@ -232,7 +233,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `mobil`
 --
 ALTER TABLE `mobil`
-  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `rental`
@@ -244,7 +245,7 @@ ALTER TABLE `rental`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_rental` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_rental` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `type`

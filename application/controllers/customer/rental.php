@@ -29,6 +29,7 @@ class Rental extends CI_Controller
 			'tanggal_pengembalian'	=> '-',
 			'status_rental'			=> 'Belum Selesai',
 			'status_pengembalian' 	=> 'Belum Kembali',
+			'total_denda' 			=> '0'
 
 		);
 

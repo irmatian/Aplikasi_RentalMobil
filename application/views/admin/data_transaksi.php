@@ -4,6 +4,7 @@
 			<h2>Data Transaksi</h2>
 		</div>
 
+		<span class="mt-3 p-3"><?php echo $this->session->flashdata('pesan') ?></span>
 		<div class="table-responsive">
 		<table class="table table-bordered table-striped">
 			
@@ -15,6 +16,7 @@
 				<th>Tgl Kembali</th>
 				<th>Harga/Hari</th>
 				<th>Denda/Hari</th>
+				<th>Total Denda</th>
 				<th>Tgl. Dikembalikan</th>
 				<th>Status Pengembalian</th>
 				<th>Status Rental</th>
@@ -33,6 +35,8 @@
 					<td><?php echo date('d/m/y', strtotime($tr->tanggal_kembali)); ?></td>
 					<td>Rp.<?php echo number_format($tr->harga,0,',','.') ?></td>
 					<td>Rp.<?php echo number_format($tr->denda,0,',','.') ?></td>
+					<td>Rp.<?php echo number_format($tr->total_denda,0,',','.') ?></td>
+
 					<td>
 						<?php 
 
@@ -45,24 +49,8 @@
 						 ?>
 					</td>
 
-					<td>
-						<?php 
-							if($tr->status == "1") {
-								echo "Kembali";
-							}else {
-								echo "Belum Kembali";
-							} ?>
-					</td>
-
-					<td>
-						<?php 
-							if($tr->status == "1") {
-								echo "Kembali";
-							}else {
-								echo "Belum Kembali";
-							} ?>
-					</td>
-
+					<td><?php echo $tr->status_pengembalian ?></td>
+					<td><?php echo $tr->status_rental ?></td>
 
 					<td>
 						<center>
@@ -84,9 +72,15 @@
 							}else { ?>
 
 								<div class="row">
-									<a class="btn btn-sm btn-success mr-3" href="<?php echo base_url('admin/transaksi/transaksi_selesai') ?>"><i class="fa fa-check"></i></a>
+									<a class="btn btn-sm btn-success mr-3" href="<?php echo base_url('admin/transaksi/transaksi_selesai/'.$tr->id_rental) ?>"><i class="fa fa-check"></i></a>
+									
 
-									<a class="btn btn-sm btn-danger" href="<?php echo base_url('admin/transaksi/transaksi_batal') ?>"><i class="fa fa-times"></i></a>
+							<!-- btn batal -->
+
+							<a class="btn btn-sm btn-danger" href="<?php echo base_url('admin/transaksi/batal_transaksi/'.$tr->id_rental) ?>"><i class="fa fa-times"></i></a>
+							<!-- selesai batal -->
+
+
 								</div>
 
 								<?php } ?>
